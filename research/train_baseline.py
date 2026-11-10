@@ -108,9 +108,14 @@ def evaluate(frame, model, kind):
     base = frame[f"forecast_{kind}"].to_numpy(dtype=float)
     actual = frame[f"actual_{kind}"].to_numpy(dtype=float)
     corrected = base + model.predict(transform(frame, kind))
+    # The pilot keeps the raw daily high and corrects the daily low.
+    use_correction = kind == "min"
+    pilot = corrected if use_correction else base
     return {
         "baseline_mae_c": round(float(mean_absolute_error(actual, base)), 4),
         "corrected_mae_c": round(float(mean_absolute_error(actual, corrected)), 4),
+        "pilot_method": "lightgbm" if use_correction else "raw",
+        "pilot_mae_c": round(float(mean_absolute_error(actual, pilot)), 4),
         "n": len(frame),
     }
 
