@@ -1,0 +1,130 @@
+{
+  "split": {
+    "train": {
+      "start": "2025-05-01",
+      "end": "2025-06-29",
+      "n": 55
+    },
+    "validation": {
+      "start": "2025-06-30",
+      "end": "2025-07-13",
+      "n": 14
+    },
+    "test": {
+      "start": "2025-07-15",
+      "end": "2025-07-28",
+      "n": 14
+    }
+  },
+  "validation_boundary": "2025-06-30",
+  "test_boundary": "2025-07-15",
+  "targets": {
+    "max": {
+      "validation_mae_by_weight": {
+        "0": 1.507142857142858,
+        "0.5": 2.071566888939398,
+        "1": 2.6359909207359364
+      },
+      "selected_weight": 0.0,
+      "baseline": {
+        "mae_c": 1.614285714285714,
+        "rmse_c": 1.8650928739801211,
+        "bias_c": -1.4714285714285718,
+        "within_1c": 0.2857142857142857,
+        "within_2c": 0.6428571428571429,
+        "n": 14
+      },
+      "full_lightgbm": {
+        "mae_c": 2.5765235956862624,
+        "rmse_c": 2.8589058447168965,
+        "bias_c": -2.5765235956862624,
+        "within_1c": 0.14285714285714285,
+        "within_2c": 0.35714285714285715,
+        "n": 14
+      },
+      "selected": {
+        "mae_c": 1.614285714285714,
+        "rmse_c": 1.8650928739801211,
+        "bias_c": -1.4714285714285718,
+        "within_1c": 0.2857142857142857,
+        "within_2c": 0.6428571428571429,
+        "n": 14
+      },
+      "improvement_pct": 0.0
+    },
+    "min": {
+      "validation_mae_by_weight": {
+        "0": 1.2357142857142858,
+        "0.5": 1.4671067939694347,
+        "1": 1.7284812706378745
+      },
+      "selected_weight": 0.0,
+      "baseline": {
+        "mae_c": 1.0714285714285716,
+        "rmse_c": 1.2850792082313727,
+        "bias_c": -0.7857142857142855,
+        "within_1c": 0.42857142857142855,
+        "within_2c": 0.9285714285714286,
+        "n": 14
+      },
+      "full_lightgbm": {
+        "mae_c": 1.6656060961940207,
+        "rmse_c": 1.8920842752293996,
+        "bias_c": -1.5955880646073097,
+        "within_1c": 0.35714285714285715,
+        "within_2c": 0.6428571428571429,
+        "n": 14
+      },
+      "selected": {
+        "mae_c": 1.0714285714285716,
+        "rmse_c": 1.2850792082313727,
+        "bias_c": -0.7857142857142855,
+        "within_1c": 0.42857142857142855,
+        "within_2c": 0.9285714285714286,
+        "n": 14
+      },
+      "improvement_pct": 0.0
+    }
+  },
+  "parameters": {
+    "start": "2025-05-01",
+    "days": 90,
+    "validation_days": 15,
+    "test_days": 15,
+    "output": "station-output-2025"
+  },
+  "station": {
+    "station_id": "54511099999",
+    "city_id": "beijing_capital_airport",
+    "latitude": 40.08,
+    "longitude": 116.585,
+    "elevation_m": 35.4,
+    "timezone": "Asia/Shanghai"
+  },
+  "failures": {
+    "2025-06-03": "Incomplete observed day: 23/24 hourly bins",
+    "2025-06-08": "Incomplete observed day: 21/24 hourly bins",
+    "2025-06-12": "Incomplete observed day: 18/24 hourly bins",
+    "2025-06-17": "Incomplete observed day: 23/24 hourly bins",
+    "2025-06-22": "Incomplete observed day: 23/24 hourly bins",
+    "2025-07-14": "Incomplete observed day: 23/24 hourly bins",
+    "2025-07-29": "Incomplete observed day: 21/24 hourly bins"
+  },
+  "requested_days": 90,
+  "accepted_days": 83,
+  "missing_fraction": 0.07777777777777772,
+  "label": "NOAA ISD FM-15 TMP QC 1/5 sampled extrema, not continuous daily extrema",
+  "forecast": "Open-Meteo Single Runs ecmwf_ifs hourly at station coordinates",
+  "availability": "12h latency assumed; historical publication timestamps NOT verified",
+  "deployment": "research only; production unchanged",
+  "git_commit": "c20e32469763c944c974dac9127d9060ff475d86",
+  "git_dirty": true,
+  "script_sha256": "d6bce9b89b95d0dc9314015326d03d3718d42828f18a2894f61267bf1f7d443f",
+  "artifacts_sha256": {
+    "collection.json": "889be61228793faae3f805879b84c44154655f581e864f2ff0d8a527a042fbc7",
+    "test_predictions.csv": "bc767822e84c0811c5cd179570f195d62e14834b1f73668ad8b884a00e721cd3",
+    "paired_data.csv": "d8cc1fad530334d0473d574974c6bc3a5c8cf9e1f8a56ef5fbbb73e2909c8d8f",
+    "Tmin_corrector.joblib": "019fec3ee20964a6576f12416a04f6ccfc34ec8dc56020e46bdb6dff14918cb4",
+    "Tmax_corrector.joblib": "02fd7242b6de69995f9b6f4cbd869fb2b5ae23106f57ad8c126f9542b6b43267"
+  }
+}

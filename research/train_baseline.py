@@ -114,6 +114,7 @@ def evaluate(frame, model, kind):
     return {
         "baseline_mae_c": round(float(mean_absolute_error(actual, base)), 4),
         "corrected_mae_c": round(float(mean_absolute_error(actual, corrected)), 4),
+        "pilot_status": "exploratory policy selected after inspecting the original test window",
         "pilot_method": "lightgbm" if use_correction else "raw",
         "pilot_mae_c": round(float(mean_absolute_error(actual, pilot)), 4),
         "n": len(frame),
@@ -131,6 +132,8 @@ def fit_and_score(frame, output_dir, min_train_days=45, test_days=30):
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     scores = {"cutoff": cutoff, "train_rows": len(train), "test_rows": len(test),
+              "train_start": str(train.date.min()), "train_end": str(train.date.max()),
+              "test_start": str(test.date.min()), "test_end": str(test.date.max()),
               "label": "ERA5 reanalysis, not independent weather station measurements",
               "lead": "fixed 24-hour lead for each valid hour, not a fixed daily issue time"}
     for kind in ("max", "min"):
