@@ -65,7 +65,7 @@ def fetch_city(session, city, start, end):
         "start_date": start, "end_date": end,
         "timezone": "auto",
         "hourly": FORECAST_VAR,
-        "models": "ecmwf_ifs_hres",
+        "models": "ecmwf_ifs",
     }
     forecast = get_json(session, FORECAST_API, params)
     actual = get_json(session, ARCHIVE_API, {
