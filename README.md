@@ -40,3 +40,39 @@ Kaggle 需要开启 Internet 权限。任何请求错误会在 CSV 的 `status` 
 - 未接入独立气象站观测，不能声称优于 ECMWF。
 - Open-Meteo 免费接口的使用须遵守服务方限制及授权条件。
 - 后续可使用 Kaggle CPU 训练 LightGBM 校正器，再比较航空观测特征的独立增益。
+
+
+## Kaggle 第二阶段：LightGBM 实验性校正
+
+第一阶段 `src/forecast.py` 的每日基线预测仍正常独立运行。第二阶段的研究代码
+位于 `research/train_baseline.py`，**不会自动更改生产预报**。
+
+### Kaggle 开始运行（CPU 即可）
+
+1. 前往 [Kaggle Code](https://www.kaggle.com/code)，创建 Notebook，语言 Python，Accelerator 选择 None，开启 Internet。
+2. 在 Notebook 单元格按顺序执行：
+
+```python
+!git clone https://github.com/Wuzzzzzzz/global-weather-ai.git
+%cd global-weather-ai
+!pip install -q -r requirements-train.txt
+!python -m pytest -q tests/test_research.py
+!python -m research.train_baseline --cities 6 --days 180 --test-days 30
+```
+
+3. 检查 `research-output/metrics.json` 中 `max` / `min` 对应的 `baseline_mae_c` 与
+   `corrected_mae_c`。校正值越低越好；**如果校正没有改进，不要启用校正模型**。
+4. 可把 `--cities 6` 改成 `--cities 22`，但注意公共 API 的使用配额。
+
+运行成功时会生成 `training_data.csv`、`temp_max_experimental.joblib`、
+`temp_min_experimental.joblib` 和 `metrics.json`。
+
+### 重要的科学限制
+
+- 训练标签目前是 ERA5 **再分析**，并不是独立的城市测站实测；目前无法据此声称真实气温预测精度已提升。
+- Previous Runs API 的 `temperature_2m_previous_day1` 是每个有效小时提前24小时的预报，
+  再聚合为日极值；并非统一“前一天当地20:00发布”的次日完整预报。
+- 后续严格验证需要 Single Runs API 记录固定起报时刻、用 NOAA/ISD 等独立测站观测做标签，
+  并与每日基准预测进行相同条件的滚动回测。
+- 目前未接入飞机温度观测，不能宣称有航空观测增强效果。
+- 数据提供方的免费使用、API 流量和许可限制仍然适用。
