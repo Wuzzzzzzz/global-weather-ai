@@ -1,0 +1,17 @@
+[
+  {
+    "url": "https://www.ncei.noaa.gov/access/services/data/v1?dataset=global-hourly&stations=54511099999%2C45007099999%2C46686099999%2C47671099999%2C47113199999%2C48698099999%2C48459099999%2C94767099999%2C93119099999%2C03772099999%2C07157099999%2C10637099999%2C08221099999%2C06240099999%2C74486094789%2C72295023174%2C72530094846%2C71624099999%2C41194099999%2C83075099999&startDate=2026-06-01&endDate=2026-06-03&dataTypes=TMP&format=json",
+    "status": 200,
+    "count": 0,
+    "payload": []
+  },
+  {
+    "url": "https://single-runs-api.open-meteo.com/v1/forecast?latitude=40.08&longitude=116.585&run=2025-06-01T00%3A00&hourly=temperature_2m&models=ecmwf_aifs025_single&forecast_days=4",
+    "status": 400,
+    "count": null,
+    "payload": {
+      "reason": "The requested model run is not available. Model: ecmwf_aifs025_single, run: 2025-06-01T00:00Z",
+      "error": true
+    }
+  }
+]

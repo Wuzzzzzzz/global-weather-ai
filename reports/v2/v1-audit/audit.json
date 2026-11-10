@@ -1,0 +1,55 @@
+{
+  "bootstrap": [
+    {
+      "target": "max",
+      "reference": "ecmwf",
+      "mae_reduction_c": 0.33753259523224954,
+      "block7_bootstrap_95pct": [
+        0.3001395850896531,
+        0.37804951952407945
+      ]
+    },
+    {
+      "target": "max",
+      "reference": "bias",
+      "mae_reduction_c": 0.059480447992985706,
+      "block7_bootstrap_95pct": [
+        0.04086395469575666,
+        0.07896849185425632
+      ]
+    },
+    {
+      "target": "min",
+      "reference": "ecmwf",
+      "mae_reduction_c": 0.24004807116636911,
+      "block7_bootstrap_95pct": [
+        0.2085459987830748,
+        0.2737437251387946
+      ]
+    },
+    {
+      "target": "min",
+      "reference": "bias",
+      "mae_reduction_c": 0.02867434928497844,
+      "block7_bootstrap_95pct": [
+        0.010811686698307826,
+        0.04748719146771466
+      ]
+    }
+  ],
+  "n": 6520,
+  "missing_fraction_calendar": 0.10928961748633881,
+  "checks": [
+    "six MAEs recomputed",
+    "no duplicate city/date",
+    "all run+12h <= cutoff",
+    "all target dates >= fold start"
+  ],
+  "limitations": [
+    "same 20 stations in training and test: geographic holdout NOT tested",
+    "13 folds include one short terminal fold; not 13 independent seasons",
+    "historical publication/QC vintages not verified",
+    "sampled airport temperature extrema; missing days excluded",
+    "bootstrap conditional on these cities and model choices; not global guarantee"
+  ]
+}

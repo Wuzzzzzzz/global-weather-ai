@@ -1,0 +1,5 @@
+-r requirements-train.txt
+dynamical-catalog==1.1.0
+icechunk==2.3.1
+xarray==2026.9.0
+zarr==3.4.2

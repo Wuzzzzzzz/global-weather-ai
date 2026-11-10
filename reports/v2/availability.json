@@ -1,0 +1,36 @@
+[
+  {
+    "model": "ecmwf_ifs",
+    "status": 200,
+    "url": "https://single-runs-api.open-meteo.com/v1/forecast?latitude=40.08&longitude=116.585&run=2026-06-01T00%3A00&hourly=temperature_2m%2Ccloud_cover%2Crelative_humidity_2m%2Cwind_speed_10m%2Cshortwave_radiation&models=ecmwf_ifs&forecast_days=4",
+    "fields": {
+      "time": 96,
+      "temperature_2m": 96,
+      "cloud_cover": 96,
+      "relative_humidity_2m": 96,
+      "wind_speed_10m": 96,
+      "shortwave_radiation": 95
+    },
+    "error": null
+  },
+  {
+    "model": "ecmwf_aifs025_single",
+    "status": 200,
+    "url": "https://single-runs-api.open-meteo.com/v1/forecast?latitude=40.08&longitude=116.585&run=2026-06-01T00%3A00&hourly=temperature_2m%2Ccloud_cover%2Crelative_humidity_2m%2Cwind_speed_10m%2Cshortwave_radiation&models=ecmwf_aifs025_single&forecast_days=4",
+    "fields": {
+      "time": 96,
+      "temperature_2m": 96,
+      "cloud_cover": 96,
+      "relative_humidity_2m": 96,
+      "wind_speed_10m": 96,
+      "shortwave_radiation": 92
+    },
+    "error": null
+  },
+  {
+    "noaa_status": 200,
+    "url": "https://www.ncei.noaa.gov/access/services/data/v1?dataset=global-hourly&stations=54511099999&startDate=2026-06-01&endDate=2026-06-03&dataTypes=TMP&format=json",
+    "count": 0,
+    "sample": []
+  }
+]

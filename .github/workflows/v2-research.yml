@@ -1,0 +1,45 @@
+name: V2 IFS AIFS independent experiment
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['configs/v2-ifs-features.json']
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: weather-v2-research
+  cancel-in-progress: false
+jobs:
+  experiment:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements-v2.txt -r requirements.txt
+      - run: python -m pytest -q
+      - name: Download verified V1 history
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download 42784203935 -n rolling-stations-42784203935 -D v1-results
+      - name: Run V2 independent test
+        shell: bash
+        run: |
+          mkdir -p v2-output
+          python -u -m research.v2_features --history v1-results/paired_data.csv --output v2-output 2>&1 | tee v2-output/run.log
+      - name: Preserve experiment evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: weather-v2-${{ github.run_id }}
+          path: v2-output/
+          retention-days: 90
+          if-no-files-found: warn
