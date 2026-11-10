@@ -1,0 +1,55 @@
+name: Rolling 20-city station backtest
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['configs/rolling-stations-v1.json']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rolling-station-backtest
+  cancel-in-progress: false
+
+jobs:
+  research:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install research dependencies
+        run: pip install -r requirements-train.txt -r requirements.txt
+      - name: Validate offline behavior
+        run: python -m pytest -q
+      - name: Collect real data and run rolling comparison
+        shell: bash
+        run: |
+          mkdir -p rolling-output
+          python -u -m research.rolling_station_backtest --output rolling-output 2>&1 | tee rolling-output/run.log
+      - name: Summarize result
+        if: always()
+        shell: bash
+        run: |
+          if [ -f rolling-output/report.md ]; then
+            cat rolling-output/report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Backtest incomplete. Inspect failure.json and run.log; no skill claim.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Preserve raw cache models and reports
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: rolling-stations-${{ github.run_id }}
+          path: rolling-output/
+          retention-days: 90
+          if-no-files-found: error

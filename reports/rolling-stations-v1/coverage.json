@@ -1,0 +1,142 @@
+[
+  {
+    "city": "Beijing",
+    "complete_days": 372,
+    "span_days": 423,
+    "test_days": 318,
+    "station_id": "54511099999"
+  },
+  {
+    "city": "Hong Kong",
+    "complete_days": 376,
+    "span_days": 423,
+    "test_days": 323,
+    "station_id": "45007099999"
+  },
+  {
+    "city": "Taipei",
+    "complete_days": 371,
+    "span_days": 423,
+    "test_days": 317,
+    "station_id": "46686099999"
+  },
+  {
+    "city": "Tokyo",
+    "complete_days": 378,
+    "span_days": 423,
+    "test_days": 324,
+    "station_id": "47671099999"
+  },
+  {
+    "city": "Seoul",
+    "complete_days": 376,
+    "span_days": 423,
+    "test_days": 323,
+    "station_id": "47113199999"
+  },
+  {
+    "city": "Singapore",
+    "complete_days": 377,
+    "span_days": 423,
+    "test_days": 324,
+    "station_id": "48698099999"
+  },
+  {
+    "city": "Bangkok",
+    "complete_days": 377,
+    "span_days": 423,
+    "test_days": 323,
+    "station_id": "48459099999"
+  },
+  {
+    "city": "Sydney",
+    "complete_days": 355,
+    "span_days": 423,
+    "test_days": 303,
+    "station_id": "94767099999"
+  },
+  {
+    "city": "Auckland",
+    "complete_days": 377,
+    "span_days": 423,
+    "test_days": 323,
+    "station_id": "93119099999"
+  },
+  {
+    "city": "London",
+    "complete_days": 393,
+    "span_days": 424,
+    "test_days": 339,
+    "station_id": "03772099999"
+  },
+  {
+    "city": "Paris",
+    "complete_days": 375,
+    "span_days": 424,
+    "test_days": 322,
+    "station_id": "07157099999"
+  },
+  {
+    "city": "Frankfurt",
+    "complete_days": 390,
+    "span_days": 424,
+    "test_days": 335,
+    "station_id": "10637099999"
+  },
+  {
+    "city": "Madrid",
+    "complete_days": 378,
+    "span_days": 424,
+    "test_days": 323,
+    "station_id": "08221099999"
+  },
+  {
+    "city": "Amsterdam",
+    "complete_days": 392,
+    "span_days": 424,
+    "test_days": 337,
+    "station_id": "06240099999"
+  },
+  {
+    "city": "New York",
+    "complete_days": 409,
+    "span_days": 424,
+    "test_days": 353,
+    "station_id": "74486094789"
+  },
+  {
+    "city": "Los Angeles",
+    "complete_days": 406,
+    "span_days": 426,
+    "test_days": 348,
+    "station_id": "72295023174"
+  },
+  {
+    "city": "Chicago",
+    "complete_days": 406,
+    "span_days": 423,
+    "test_days": 355,
+    "station_id": "72530094846"
+  },
+  {
+    "city": "Toronto",
+    "complete_days": 365,
+    "span_days": 424,
+    "test_days": 311,
+    "station_id": "71624099999"
+  },
+  {
+    "city": "Dubai",
+    "complete_days": 365,
+    "span_days": 423,
+    "test_days": 312,
+    "station_id": "41194099999"
+  },
+  {
+    "city": "Sao Paulo",
+    "complete_days": 354,
+    "span_days": 424,
+    "test_days": 307,
+    "station_id": "83075099999"
+  }
+]
